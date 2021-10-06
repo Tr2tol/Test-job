@@ -1,6 +1,6 @@
 #!/bin/bash
 
-wget https://raw.githubusercontent.com/GreatMedivack/files/master/list.out ./
+wget https://raw.githubusercontent.com/GreatMedivack/files/master/list.out
 DATE=`date '+%d_%m_%Y'`;
 touch SERVER_$DATE\_failed.out
 touch SERVER_$DATE\_running.out
@@ -10,7 +10,6 @@ RUNN=./SERVER_$DATE\_running.out
 REP=./SERVER_$DATE\_report.out
 ARCHV=./SERVER_$DATE.tar
 name="$(whoami)"
-a=" "
 awk '{if ($3 == "CrashLoopBackOff" || $3 == "Error") print $1 > 1}' list.out; cat 1  > $FAIL
 awk '{if ($3 == "Running") print $1 > 1}' list.out; cat 1 > $RUNN
 rm -rf 1
